@@ -11,7 +11,7 @@ public record ArticleViewResponse(
     LocalDateTime createdAt) {
 
     public ArticleViewResponse() {
-        this(null, null, null, null); // 필드들을 기본값으로 초기화
+        this(null, null, null, LocalDateTime.now());
     }
 
     public ArticleViewResponse(Article article) {

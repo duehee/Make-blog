@@ -23,6 +23,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "게시물 CRUD", description = "블로그 게시물 CRUD")
+@RequestMapping("/api/articles")
 public interface ArticleApi {
 
     @ApiResponses(
@@ -33,7 +34,7 @@ public interface ArticleApi {
         }
     )
     @Operation(summary = "게시물 생성하기")
-    @PostMapping("/article")
+    @PostMapping()
     ResponseEntity<ArticleResponse> createArticle
         (
             @RequestBody ArticleCreateRequest request
@@ -46,7 +47,7 @@ public interface ArticleApi {
         }
     )
     @Operation(summary = "모든 게시물 조회하기")
-    @GetMapping("/article")
+    @GetMapping()
     ResponseEntity<List<ArticleResponse>> findAllArticle();
 
     @ApiResponses(
@@ -56,7 +57,7 @@ public interface ArticleApi {
         }
     )
     @Operation(summary = "id로 게시물 조회하기")
-    @GetMapping("/article/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<ArticleResponse> findArticle
         (
             @PathVariable Long id
@@ -69,7 +70,7 @@ public interface ArticleApi {
         }
     )
     @Operation(summary = "id로 게시물 수정하기")
-    @PutMapping("/article/{id}")
+    @PutMapping("/{id}")
     ResponseEntity<Article> updateArticleById
         (
             @PathVariable Long id, @RequestBody ArticleUpdateRequest request
@@ -83,7 +84,7 @@ public interface ArticleApi {
         }
     )
     @Operation(summary = "id로 게시물 삭제하기")
-    @DeleteMapping("/article/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<Void> deleteArticleById
         (
             @PathVariable Long id

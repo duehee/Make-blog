@@ -46,8 +46,7 @@ public class ArticleController implements ArticleApi {
 
     @PutMapping("/{id}")
     public ResponseEntity<Article> updateArticleById(@PathVariable Long id,
-        @RequestBody ArticleUpdateRequest request)
-    {
+        @RequestBody ArticleUpdateRequest request) {
         Article article = articleService.updateArticle(id, request);
         return ResponseEntity.ok().body(article);
     }

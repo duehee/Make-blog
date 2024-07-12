@@ -2,6 +2,8 @@ package duehee.duehee_blog.dto;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.*;
 
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

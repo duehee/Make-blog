@@ -9,5 +9,5 @@ public record ArticleUpdateRequest
 
         @Schema(description = "게시물 내용", example = "게시물 내용 1")
         String content
-    ){
+    ) {
 }

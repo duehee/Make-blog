@@ -17,7 +17,7 @@ public interface ArticleRepository extends Repository<Article, Long> {
     List<Article> findAll();
 
     default Article getById(Long id) {
-        return findById(id).orElseThrow(()-> new IllegalArgumentException("유저 id를 찾을 수 없습니다."));
+        return findById(id).orElseThrow(() -> new IllegalArgumentException("유저 id를 찾을 수 없습니다."));
     }
 
     Void deleteById(Long id);
