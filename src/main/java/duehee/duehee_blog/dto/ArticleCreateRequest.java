@@ -23,9 +23,12 @@ public record ArticleCreateRequest(
     String content
 ) {
     public Article toEntity() {
+        LocalDateTime now = LocalDateTime.now();
         return Article.builder()
             .title(title)
             .content(content)
+            .createdAt(now)
+            .updatedAt(now)
             .build();
     }
 }

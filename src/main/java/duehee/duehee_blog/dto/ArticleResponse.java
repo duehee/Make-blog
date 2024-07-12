@@ -27,7 +27,7 @@ public record ArticleResponse(
             article.getTitle(),
             article.getContent(),
             article.getCreatedAt(),
-            article.getUpdateAt()
+            article.getUpdatedAt()
         );
     }
 }

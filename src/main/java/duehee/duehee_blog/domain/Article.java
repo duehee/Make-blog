@@ -4,7 +4,6 @@ import static lombok.AccessLevel.*;
 
 import java.time.LocalDateTime;
 
-import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,6 +14,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "Article")
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,15 +43,15 @@ public class Article {
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(name = "update_at")
-    private LocalDateTime updateAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     @Builder
-    public Article(String title, String content, LocalDateTime createdAt, LocalDateTime updateAt) {
+    public Article(String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        this.updatedAt = updatedAt;
     }
 
     public void update(String title, String content) {
