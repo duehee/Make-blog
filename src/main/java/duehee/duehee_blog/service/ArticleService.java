@@ -18,8 +18,8 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
 
     @Transactional
-    public Article createArticle(ArticleCreateRequest request) {
-        return articleRepository.save(request.toEntity());
+    public Article createArticle(ArticleCreateRequest request, String userName) {
+        return articleRepository.save(request.toEntity(userName));
     }
 
     public Article findArticleById(Long id) {

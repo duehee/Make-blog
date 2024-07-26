@@ -22,11 +22,12 @@ public record ArticleCreateRequest(
     @NotNull(message = "게시물 내용은 비울 수 없어요.")
     String content
 ) {
-    public Article toEntity() {
+    public Article toEntity(String author) {
         LocalDateTime now = LocalDateTime.now();
         return Article.builder()
             .title(title)
             .content(content)
+            .author(author)
             .createdAt(now)
             .updatedAt(now)
             .build();

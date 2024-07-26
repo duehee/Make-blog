@@ -1,5 +1,6 @@
 package duehee.duehee_blog.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public interface ArticleApi {
     @PostMapping()
     ResponseEntity<ArticleResponse> createArticle
         (
-            @RequestBody ArticleCreateRequest request
+            @RequestBody ArticleCreateRequest request, Principal principal
         );
 
     @ApiResponses(

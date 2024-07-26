@@ -9,6 +9,9 @@ public record ArticleResponse(
     @Schema(description = "게시물 id")
     Long id,
 
+    @Schema(description = "작성자 이름")
+    String author,
+
     @Schema(description = "게시물 제목", example = "게시물 제목 1")
     String title,
 
@@ -24,6 +27,7 @@ public record ArticleResponse(
     public static ArticleResponse from(Article article) {
         return new ArticleResponse(
             article.getId(),
+            article.getAuthor(),
             article.getTitle(),
             article.getContent(),
             article.getCreatedAt(),

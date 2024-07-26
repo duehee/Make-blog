@@ -14,12 +14,13 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Long register(UserRegisterRequest request) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
         return userRepository.save(User.builder()
             .email(request.email())
-            .password(bCryptPasswordEncoder.encode(request.password()))
+            .password(encoder.encode(request.password()))
             .build()).getId();
     }
 }

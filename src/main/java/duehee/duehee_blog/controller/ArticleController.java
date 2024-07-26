@@ -1,7 +1,9 @@
 package duehee.duehee_blog.controller;
 
+import java.security.Principal;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +29,10 @@ public class ArticleController implements ArticleApi {
     private final ArticleService articleService;
 
     @PostMapping
-    public ResponseEntity<ArticleResponse> createArticle(@RequestBody ArticleCreateRequest request) {
-        ArticleResponse saveArticle = ArticleResponse.from(articleService.createArticle(request));
-        return ResponseEntity.ok(saveArticle);
+    public ResponseEntity<ArticleResponse> createArticle(@RequestBody ArticleCreateRequest request, Principal principal) {
+        ArticleResponse saveArticle = ArticleResponse.from(articleService.createArticle(request, principal.getName()));
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(saveArticle);
     }
 
     @GetMapping

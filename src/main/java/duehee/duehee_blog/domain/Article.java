@@ -32,6 +32,9 @@ public class Article {
     @Column(name = "id", updatable = false)
     private Long id;
 
+    @Column(name = "author", nullable = false)
+    private String author;
+
     @Column(name = "title", nullable = false)
     private String title;
 
@@ -47,9 +50,10 @@ public class Article {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Article(String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Article(String title, String content, String author, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.title = title;
         this.content = content;
+        this.author = author;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
